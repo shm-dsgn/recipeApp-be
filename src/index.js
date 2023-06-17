@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { userRouter } from "./routes/user.js";
-// import { recipesRouter } from "./routes/recipes.js";
+import { recipesRouter } from "./routes/recipes.js";
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/auth", userRouter);
-// app.use("/recipes", recipesRouter);
+app.use("/recipes", recipesRouter);
 
 //connect to mongodb
 const dbUser = process.env.DB_USER;
