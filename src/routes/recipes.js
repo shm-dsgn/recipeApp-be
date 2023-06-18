@@ -43,10 +43,7 @@ router.put("/", verifyToken, async (req, res) => {
 router.get("/savedRecipes/ids/:userID", async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.userID);
-    const savedRecipes = await RecipeModel.find({
-      _id: { $in: user.savedRecipes },
-    });
-    res.json({ savedRecipes });
+    res.json({ savedRecipes: user?.savedRecipes });
   } catch (err) {
     res.json(err);
   }
